@@ -1,0 +1,7 @@
+com.uek.etl
+com.uek.etl.controller
+com.uek.etl.dao
+com.uek.etl.dao.entities
+com.uek.etl.responses
+com.uek.etl.schema
+com.uek.etl.services

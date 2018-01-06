@@ -1,0 +1,70 @@
+<div ng-init="getProducts()">
+    <h4>Opinie o produktach</h4><br>
+    <form>
+        <div class="form-group">
+            <label for="productChoice">Wybierz produkt</label>
+            <select class="form-control" id="productChoice">
+                <option ng-repeat="p in products" value="{{p.id}}">{{p.brand}} {{p.model}}  (kod: {{p.id}})</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-primary" ng-click="getReviews()">Wyświetl opinie</button>
+    </form>
+    <br>
+	<div id="accordion" role="tablist">
+        <div class="card" ng-repeat="r in productReviews">
+            <div class="card-header" role="tab" id="h_review{{$index}}" type="button" data-toggle="collapse" data-target="#c_review{{$index}}" aria-expanded="true" aria-controls="c_review{{$index}}">
+                <table id="reviewsTable" class="table-responsive table-sm" width="100%">
+                    <tbody>
+                        <tr>
+                            <td><i class="fa fa-user" aria-hidden="true"></i> {{r.author}}</td>
+                            <td><i class="fa fa-calendar" aria-hidden="true"></i> {{r.date}}</td>
+                            <td><i class="fa fa-star" aria-hidden="true"></i> {{r.starsNumber}}</td>                                
+                            <td><i class="fa fa-share" aria-hidden="true"></i> {{r.recommendation}}</td>
+                            <td><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{r.votesForReviewUseful}}</td>
+                            <td><i class="fa fa-thumbs-down" aria-hidden="true"></i> {{r.votesForReviewUseless}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="c_review{{$index}}" class="collapse" role="tabpanel" aria-labelledby="h_review{{$index}}" data-parent="#accordion">
+                <div class="card-body">
+                    <b>Opinia:</b><br>{{r.reviewSummary}}<br><br>
+                    <table class="table table-responsive table-bordered table-sm">
+                        <thead>
+                            <tr>
+                                <th><i class="fa fa-plus-square" aria-hidden="true"></i> Zalety</th>
+                                <th><i class="fa fa-minus-square" aria-hidden="true"></i> Wady</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{r.advantages}}</td>
+                                <td>{{r.disadvantages}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal (no reviews for product) -->
+    <div class="modal fade" id="noReviewsModal" tabindex="-1" role="dialog" aria-labelledby="noReviewsModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="noReviewsModalLabel">Brak opinii</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Brak opinii dla wybranego produktu
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>

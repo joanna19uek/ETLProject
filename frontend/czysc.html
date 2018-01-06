@@ -1,0 +1,60 @@
+<div>
+    <h4>Czyszczenie bazy danych</h4>
+    <br>
+    <div>
+        <form>
+            <h5>Wybierz co chcesz usunąć z bazy danych:</h5>
+            <div class="form-check col-md-3">
+                <input class="form-check-input" type="radio" name="clearRadios" id="deleteAll" value="all" checked>
+                <label class="form-check-label" for="deleteAll">Wszystko</label>
+            </div>
+            <div class="form-check col-md-3">
+                <input class="form-check-input" type="radio" name="clearRadios" id="deleteReview" value="reviewsOnly">
+                <label class="form-check-label" for="deleteReview">Tylko opinie</label>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary" ng-click="clear()">Wyczyść bazę</button>
+        </form>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Usunięto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="deleteModalBody">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">UWAGA!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Czy na pewno chcesz usunąć wszystkie {{records}} z bazy danych?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="clearDB()">Tak</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Nie</button>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>

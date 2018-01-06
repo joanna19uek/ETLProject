@@ -1,0 +1,100 @@
+<div>
+    <h4>Proces ETL</h4><br>
+    <div>
+        <h5>Podaj kod produktu:</h5>
+        <input type="text" class="form-control" placeholder="Kod produktu" ng-model="productCode" id="productCode"><br>
+        <button type="button" class="btn btn-outline-primary" id="extract" ng-click="extract()">Extract</button>
+        <button type="button" class="btn btn-outline-primary" id="transform" ng-click="transform()" disabled>Transform</button>
+        <button type="button" class="btn btn-outline-primary" id="load" ng-click="load()" disabled>Load</button>
+        <button type="button" class="btn btn-outline-primary" id="etl" ng-click="etl()">ETL</button>
+    </div>
+    <br>
+    
+    <!-- Modal (no product code given) -->
+    <div class="modal fade" id="noCodeModal" tabindex="-1" role="dialog" aria-labelledby="noCodeModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="noCodeModalLabel">Błąd</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Nie podano żadnego kodu.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div> 
+        </div>
+    </div>
+    
+    <!-- Modal (wrong product code given) -->
+    <div class="modal fade" id="wrongCodeModal" tabindex="-1" role="dialog" aria-labelledby="wrongCodeModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="wrongCodeModalLabel">Błąd</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Wprowadzony kod produktu jest niepoprawny. Spróbuj jeszcze raz.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal (waiting) -->
+    <div class="modal hide" id="waitingModal" tabindex="-1" role="dialog" aria-labelledby="waitingModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="waitingModalLabel">Trwa ładowanie...</h5>
+                </div>
+                <div class="modal-body" id="waitingModal-body">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Extract response -->
+    <div id="extractDiv" style="display:none">
+        Produkt: <span ng-bind="product"></span><br>
+        Liczba stron z opiniami: <span ng-bind="pagesNumber"></span><br>
+        Liczba opinii: <span ng-bind="reviewsNumber"></span>
+    </div>
+    
+    <!-- Transform response -->
+    <div id="transformDiv" style="display:none">
+        Liczba produktów gotowych do załadowania do bazy: <span ng-bind="productRecords"></span><br>
+        Liczba opinii gotowych do załadowanaia do bazy: <span ng-bind="reviewRecords"></span>
+    </div>
+    
+    <!-- Load response -->
+    <div id="loadDiv" style="display:none">
+        Liczba nowych rekordów w tabeli produktów: <span ng-bind="newProductsNumber"></span><br>
+        Liczba nowych rekordów w tabeli opinii: <span ng-bind="newReviewsNumber"></span><br>
+        Liczba nowych rekordów w tabeli zalet: <span ng-bind="newAdvantagesNumber"></span><br>
+        Liczba nowych rekordów w tabeli wad: <span ng-bind="newDisadvantagesNumber"></span>
+    </div>
+    
+    <!-- ETL response -->
+    <div id="etlDiv" style="display:none">
+        Produkt: <span ng-bind="product"></span><br>
+        Liczba stron z opiniami: <span ng-bind="pagesNumber"></span><br>
+        Liczba opinii: <span ng-bind="reviewsNumber"></span><br><br>
+        Liczba produktów gotowych do załadowania do bazy: <span ng-bind="productRecords"></span><br>
+        Liczba opinii gotowych do załadowanaia do bazy: <span ng-bind="reviewRecords"></span><br><br>
+        Liczba nowych rekordów w tabeli produktów: <span ng-bind="newProductsNumber"></span><br>
+        Liczba nowych rekordów w tabeli opinii: <span ng-bind="newReviewsNumber"></span><br>
+        Liczba nowych rekordów w tabeli zalet: <span ng-bind="newAdvantagesNumber"></span><br>
+        Liczba nowych rekordów w tabeli wad: <span ng-bind="newDisadvantagesNumber"></span>
+    </div>
+</div>

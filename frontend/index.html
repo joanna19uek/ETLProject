@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>ETL - opinie o produktach</title>
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        
+        <!-- Font awesome - icons -->
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    
+    <body ng-app="myApp" ng-controller="myCtrl" ng-init="start()">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#/!" onclick="changeToMain()">
+              <i class="fa fa-home" aria-hidden="true"></i>
+            </a>
+            <span class="navbar-text" style="margin-left:auto; margin-right:auto; color: white">Opinie o produktach z Ceneo.pl</span>
+        </nav>
+        
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col col-md-3 d-none d-lg-block" id="menu">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link" id="menu-etl" data-toggle="pill" href="#!etl" role="tab" aria-selected="true">Proces ETL</a>
+                        <a class="nav-link" id="menu-produkty" data-toggle="pill" href="#!produkty" role="tab" aria-selected="false">Produkty</a>
+                        <a class="nav-link" id="menu-opinie" data-toggle="pill" href="#!opinie" role="tab" aria-selected="false">Opinie</a>
+                        <a class="nav-link" id="menu-baza" data-toggle="pill" href="#!baza" role="tab" aria-selected="false">Baza danych</a>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="container tab-content" id="nav-tabContent" ng-view></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- jQuery, Popper.js, Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        
+        <!-- Angular JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+        
+        <!-- Angular script -->
+        <script src="angular.js"></script>
+        
+        
+        <script>
+            function changeToMain() {
+                $('.nav-link.active').removeClass('active');
+            }
+        </script>
+    </body>
+</html>

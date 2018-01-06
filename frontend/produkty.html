@@ -1,0 +1,43 @@
+<div ng-init="getProducts()">
+    <h4>Produkty</h4>
+    <div id="downAll" style="display: none"><span>Pobierz wszystkie:   </span> <button type="button" class="btn btn-success btn-sm" ng-click="downloadAllCSV()">csv</button> <button type="button" class="btn btn-warning btn-sm" ng-click="downloadAllTXT()">txt</button></div>
+    <br>
+    <table id="productTable" class="table table-responsive table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Kod produktu</th>
+                <th>Kategoria</th>
+                <th>Marka</th>
+                <th>Model</th>
+                <th>Dodatkowe uwagi</th>
+                <th>Eksport opinii</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat='p in products'>
+                <td>{{p.id}}</td>
+                <td>{{p.type}}</td> 
+                <td>{{p.brand}}</td>
+                <td>{{p.model}}</td>
+                <td>{{p.additionalNotes}}</td>
+                <td align="center">
+                    <button type="button" class="btn btn-success btn-sm" ng-click='downloadCSV(p.id)'>csv</button>
+                    <button type="button" class="btn btn-warning btn-sm" ng-click='downloadTXT(p.id)' >txt</button></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <!-- prepare Modal - WAITING -->
+    <div class="modal hide" id="waitingModal" tabindex="-1" role="dialog" aria-labelledby="waitingModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="waitingModalLabel">Trwa ładowanie...</h5>
+                </div>
+                <div class="modal-body" id="waitingModal-body">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
